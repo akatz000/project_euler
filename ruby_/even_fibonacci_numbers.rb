@@ -4,6 +4,8 @@
 #   By considering the terms in the Fibonacci sequence whose values do not
 #   exceed four million, find the sum of the even-valued terms.
 
+Cache = {}
+
 def even_fibonacci_sum
   n = 1
   fibonaccis = []
@@ -20,8 +22,11 @@ def fibonacci(n)
     1
   elsif n == 2
     2
+  elsif Cache[n]
+    Cache[n]
   else
-    fibonacci(n - 1) + fibonacci(n - 2)
+    Cache[n] = fibonacci(n - 1) + fibonacci(n - 2)
+    Cache[n]
   end
 end
 
